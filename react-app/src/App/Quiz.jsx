@@ -36,6 +36,7 @@ const Quiz = ({ questionNum, setQuestionNum, score, setScore }) => {
 
   return (
     <>
+      <h1 className="title">Country Quiz</h1>
       <div className="image">
         <img src={adventure} alt="adventure" />
       </div>

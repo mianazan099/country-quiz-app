@@ -10,7 +10,6 @@ const App = () => {
   return (
     <div className="app">
       <div className="outer-card">
-        <h1 className="title">Country Quiz</h1>
         {questionNum < 10 ? (
           <Quiz
             questionNum={questionNum}

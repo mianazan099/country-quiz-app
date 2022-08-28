@@ -178,6 +178,9 @@
     text-align: center;
     margin-bottom: 80px;
   }
+  .title.result-title {
+    margin-bottom: 10px;
+  }
   .image {
     top: 80px;
     right: 50%;
