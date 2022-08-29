@@ -173,6 +173,34 @@
   color: #1d355d;
 }
 
+.choose-card {
+  padding: 5rem 2.5rem;
+  text-align: center;
+}
+
+.choose {
+  font-weight: 700;
+  font-size: 30px;
+  color: #1d355d;
+  margin-bottom: 3rem;
+}
+
+.choose-btn:first-of-type {
+  margin-bottom: 2rem;
+}
+
+.choose-btn {
+  width: 300px;
+  padding: 18px 60px;
+  border: 2px solid #1d355d;
+  border-radius: 12px;
+  background: none;
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 27px;
+  color: #1d355d;
+}
+
 @media (max-width: 464px) {
   .title {
     text-align: center;
@@ -203,5 +231,16 @@
   .option .letter {
     font-size: 20px;
     line-height: normal;
+  }
+  .choose-card {
+    padding: 3rem 2rem;
+  }
+  .choose {
+    font-size: 24px;
+    margin-bottom: 2rem;
+  }
+  .choose-btn {
+    width: 270px;
+    font-size: 16px;
   }
 }

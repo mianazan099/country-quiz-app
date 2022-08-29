@@ -1,6 +1,6 @@
 import winner from "./images/winners.svg";
 
-const Result = ({ result, setScore, setQuestionNum }) => {
+const Result = ({ result, setScore, setQuestionNum, setQuiz }) => {
   return (
     <>
       <h1 className="title result-title">Country Quiz</h1>
@@ -17,6 +17,7 @@ const Result = ({ result, setScore, setQuestionNum }) => {
           onClick={() => {
             setScore(0);
             setQuestionNum(0);
+            setQuiz(0);
           }}
         >
           Try again
