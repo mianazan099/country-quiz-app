@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
-import Button from "./Button";
-import data from "./countryData.json";
-import adventure from "./images/adventure.svg";
+import data from "./assets/countryData.json";
+import Button from "./Button/Button";
+import adventure from "./assets/images/adventure.svg";
 
 function getFourRandomCountries() {
   const countries = [];
@@ -16,7 +16,7 @@ function getRandomCountry(countries) {
 }
 
 function nextQuestion() {
-  document.querySelector(".next-question").style.display = "none";
+  document.querySelector(".quiz-next-question").style.display = "none";
   document.querySelectorAll(".option").forEach((e) => {
     e.classList.remove("right");
     e.classList.remove("wrong");
@@ -24,7 +24,13 @@ function nextQuestion() {
   });
 }
 
-const Quiz = ({ questionNum, setQuestionNum, score, setScore }) => {
+const CapitalQuiz = ({
+  quiz,
+  questionNum,
+  setQuestionNum,
+  score,
+  setScore,
+}) => {
   const [countries, setCountries] = useState(getFourRandomCountries());
   const [randomCountry, setRandomCountry] = useState(
     getRandomCountry(countries)
@@ -33,18 +39,28 @@ const Quiz = ({ questionNum, setQuestionNum, score, setScore }) => {
   useEffect(() => {
     setRandomCountry(getRandomCountry(countries));
   }, [countries]);
-
   return (
     <>
-      <h1 className="title">Country Quiz</h1>
-      <div className="image">
+      <h1 className="quiz-title up-title">Country Quiz</h1>
+      <div className="quiz-image">
         <img src={adventure} alt="adventure" />
       </div>
       <div className="inner-card">
-        <p className="question">
-          {questionNum + 1}. {randomCountry.capital} is the capital of
-        </p>
-        <div className="options-container">
+        {quiz === "capital" ? (
+          <p className="quiz-question">
+            {questionNum + 1}. {randomCountry.capital} is the capital of
+          </p>
+        ) : (
+          <>
+            <div className="flag-image">
+              <img src={randomCountry.flag} alt="flag" />
+            </div>
+            <p className="quiz-question">
+              {questionNum + 1}. Which country does this flag belong to?
+            </p>
+          </>
+        )}
+        <div className="quiz-options-container">
           {countries.map((country, index) => (
             <Button
               key={index}
@@ -57,7 +73,7 @@ const Quiz = ({ questionNum, setQuestionNum, score, setScore }) => {
           ))}
         </div>
         <button
-          className="next-question"
+          className="quiz-next-question"
           onClick={() => {
             nextQuestion();
             setCountries(getFourRandomCountries());
@@ -71,4 +87,4 @@ const Quiz = ({ questionNum, setQuestionNum, score, setScore }) => {
   );
 };
 
-export default Quiz;
+export default CapitalQuiz;

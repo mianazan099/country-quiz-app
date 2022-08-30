@@ -1,13 +1,15 @@
+import "./Choose.css";
+
 const Choose = ({ setQuiz }) => {
   return (
     <>
-      <h1 className="title result-title">Country Quiz</h1>
+      <h1 className="quiz-title">Country Quiz</h1>
       <div className="inner-card choose-card">
-        <p className="choose">What Type of Game You Want to Play</p>
+        <p className="choose-text">What Type of Game You Want to Play</p>
         <button
           className="choose-btn"
           onClick={() => {
-            setQuiz(1);
+            setQuiz("capital");
           }}
         >
           Guess the Capital
@@ -15,7 +17,7 @@ const Choose = ({ setQuiz }) => {
         <button
           className="choose-btn"
           onClick={() => {
-            setQuiz(2);
+            setQuiz("flag");
           }}
         >
           Guess the Flag

@@ -1,8 +1,7 @@
 import { useState } from "react";
-import CapitalQuiz from "./CapitalQuiz";
-import Result from "./Result";
-import Choose from "./Choose";
-import FlagQuiz from "./FlagQuiz";
+import Choose from "./Choose/Choose";
+import Result from "./Result/Result";
+import Quiz from "./Quiz";
 import "./App.css";
 
 function renderThis(
@@ -14,32 +13,25 @@ function renderThis(
   setScore
 ) {
   switch (quiz) {
-    case 0:
+    case "choose":
       return <Choose setQuiz={setQuiz} />;
-      break;
-    case 1:
+    default:
       return (
-        <CapitalQuiz
+        <Quiz
+          quiz={quiz}
           questionNum={questionNum}
           setQuestionNum={setQuestionNum}
           score={score}
           setScore={setScore}
         />
       );
-      break;
-    case 2:
-      return <FlagQuiz />;
-      break;
-
-    default:
-      break;
   }
 }
 
 const App = () => {
+  const [quiz, setQuiz] = useState("choose");
   const [questionNum, setQuestionNum] = useState(0);
   const [score, setScore] = useState(0);
-  const [quiz, setQuiz] = useState(0);
 
   return (
     <div className="app">

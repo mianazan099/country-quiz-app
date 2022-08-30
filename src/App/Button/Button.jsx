@@ -1,14 +1,16 @@
+import "./Button.css";
+
 function checkAnswer(e, randomCountry, score, setScore) {
   const answer = randomCountry.name.toLocaleLowerCase();
   const name = e.target.innerHTML.slice(29, -30).toLocaleLowerCase();
-  document.querySelector(".next-question").style.display = "block";
+  document.querySelector(".quiz-next-question").style.display = "block";
   document.querySelectorAll(".option").forEach((option) => {
     option.disabled = true;
     const optionName = option.innerHTML.slice(29, -30).toLocaleLowerCase();
     if (answer === optionName) {
       setTimeout(() => {
         option.classList.add("right");
-      }, 300);
+      }, 250);
     }
   });
   if (answer === name) {
@@ -35,3 +37,16 @@ const Button = ({ index, randomCountry, country, score, setScore }) => (
 );
 
 export default Button;
+
+// const Button = ({ index, randomCountry, country, score, setScore }) => (
+//   <button
+//     className="option"
+
+//   >
+//     <span className="letter">{letters[index]}</span>
+//     {country.name}
+//     <span className="identify"></span>
+//   </button>
+// );
+
+// export default Button;
