@@ -84,6 +84,9 @@
     right: 50%;
     transform: translateX(50%);
   }
+  .flag-image {
+    margin-bottom: 18px;
+  }
   .quiz-question {
     font-size: 20px;
     margin-bottom: 20px;
