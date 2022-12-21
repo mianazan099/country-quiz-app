@@ -1,7 +1,7 @@
 import winner from "../assets/images/winners.svg";
 import "./Result.css";
 
-const Result = ({ result, setScore, setQuestionNum, setQuiz }) => {
+const Result = ({ state, dispatch }) => {
   return (
     <>
       <h1 className="quiz-title">Country Quiz</h1>
@@ -11,14 +11,17 @@ const Result = ({ result, setScore, setQuestionNum, setQuiz }) => {
         </div>
         <p className="result">Results</p>
         <p className="your-result">
-          You got <span>{result}</span> correct answers
+          You got <span>{state.score}</span> correct answers
         </p>
         <button
           className="try-again"
           onClick={() => {
-            setScore(0);
-            setQuestionNum(0);
-            setQuiz("choose");
+            dispatch({ type: "setScore", payload: { score: 0 } });
+            dispatch({
+              type: "setQuestion",
+              payload: { questionNum: 0 },
+            });
+            dispatch({ type: "setQuiz", payload: { quiz: "choose" } });
           }}
         >
           Try again

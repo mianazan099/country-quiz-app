@@ -1,6 +1,6 @@
 import "./Choose.css";
 
-const Choose = ({ setQuiz }) => {
+const Choose = ({ dispatch }) => {
   return (
     <>
       <h1 className="quiz-title">Country Quiz</h1>
@@ -9,7 +9,7 @@ const Choose = ({ setQuiz }) => {
         <button
           className="choose-btn"
           onClick={() => {
-            setQuiz("capital");
+            dispatch({ type: "setQuiz", payload: { quiz: "capital" } });
           }}
         >
           Guess the Capital
@@ -17,7 +17,7 @@ const Choose = ({ setQuiz }) => {
         <button
           className="choose-btn"
           onClick={() => {
-            setQuiz("flag");
+            dispatch({ type: "setQuiz", payload: { quiz: "flag" } });
           }}
         >
           Guess the Flag

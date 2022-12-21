@@ -1,57 +1,55 @@
-import { useState } from "react";
+import { useReducer } from "react";
 import Choose from "./Choose/Choose";
 import Result from "./Result/Result";
 import Quiz from "./Quiz";
 import "./App.css";
 
-function renderThis(
-  quiz,
-  setQuiz,
-  questionNum,
-  setQuestionNum,
-  score,
-  setScore
-) {
-  switch (quiz) {
+function renderThis(state, dispatch) {
+  switch (state.quiz) {
     case "choose":
-      return <Choose setQuiz={setQuiz} />;
+      return <Choose dispatch={dispatch} />;
     default:
-      return (
-        <Quiz
-          quiz={quiz}
-          questionNum={questionNum}
-          setQuestionNum={setQuestionNum}
-          score={score}
-          setScore={setScore}
-        />
-      );
+      return <Quiz state={state} dispatch={dispatch} />;
+  }
+}
+
+function reducer(state, action) {
+  switch (action.type) {
+    case "setQuiz":
+      return {
+        ...state,
+        quiz: action.payload.quiz,
+      };
+    case "setQuestion":
+      return {
+        ...state,
+        questionNum: action.payload.questionNum,
+      };
+    case "setScore":
+      return {
+        ...state,
+        score: action.payload.score,
+      };
+
+    default:
+      break;
   }
 }
 
 const App = () => {
-  const [quiz, setQuiz] = useState("choose");
-  const [questionNum, setQuestionNum] = useState(0);
-  const [score, setScore] = useState(0);
+  const [state, dispatch] = useReducer(reducer, {
+    quiz: "choose",
+    questionNum: 0,
+    score: 0,
+  });
 
   return (
     <div className="app">
       <div className="outer-card">
-        {questionNum < 10 ? (
-          renderThis(
-            quiz,
-            setQuiz,
-            questionNum,
-            setQuestionNum,
-            score,
-            setScore
-          )
+        {state.questionNum < 10 ? (
+          renderThis(state, dispatch)
         ) : (
-          <Result
-            result={score}
-            setScore={setScore}
-            setQuestionNum={setQuestionNum}
-            setQuiz={setQuiz}
-          />
+          <Result state={state} dispatch={dispatch} />
         )}
       </div>
     </div>

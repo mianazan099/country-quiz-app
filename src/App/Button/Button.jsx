@@ -1,6 +1,6 @@
 import "./Button.css";
 
-function checkAnswer(e, randomCountry, score, setScore) {
+function checkAnswer(e, randomCountry, state, dispatch) {
   const answer = randomCountry.name.toLocaleLowerCase();
   const name = e.target.innerHTML.slice(29, -30).toLocaleLowerCase();
   document.querySelector(".quiz-next-question").style.display = "block";
@@ -15,7 +15,12 @@ function checkAnswer(e, randomCountry, score, setScore) {
   });
   if (answer === name) {
     e.target.classList.add("right");
-    setScore(score + 1);
+    dispatch({
+      type: "setScore",
+      payload: {
+        score: state.score + 1,
+      },
+    });
   } else {
     e.target.classList.add("wrong");
   }
@@ -23,11 +28,11 @@ function checkAnswer(e, randomCountry, score, setScore) {
 
 const letters = ["A", "B", "C", "D"];
 
-const Button = ({ index, randomCountry, country, score, setScore }) => (
+const Button = ({ index, randomCountry, country, state, dispatch }) => (
   <button
     className="option"
     onClick={(e) => {
-      checkAnswer(e, randomCountry, score, setScore);
+      checkAnswer(e, randomCountry, state, dispatch);
     }}
   >
     <span className="letter">{letters[index]}</span>
@@ -37,16 +42,3 @@ const Button = ({ index, randomCountry, country, score, setScore }) => (
 );
 
 export default Button;
-
-// const Button = ({ index, randomCountry, country, score, setScore }) => (
-//   <button
-//     className="option"
-
-//   >
-//     <span className="letter">{letters[index]}</span>
-//     {country.name}
-//     <span className="identify"></span>
-//   </button>
-// );
-
-// export default Button;

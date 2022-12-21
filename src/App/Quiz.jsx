@@ -24,13 +24,7 @@ function nextQuestion() {
   });
 }
 
-const CapitalQuiz = ({
-  quiz,
-  questionNum,
-  setQuestionNum,
-  score,
-  setScore,
-}) => {
+const CapitalQuiz = ({ state, dispatch }) => {
   const [countries, setCountries] = useState(getFourRandomCountries());
   const [randomCountry, setRandomCountry] = useState(
     getRandomCountry(countries)
@@ -46,17 +40,18 @@ const CapitalQuiz = ({
         <img src={adventure} alt="adventure" />
       </div>
       <div className="inner-card">
-        {quiz === "capital" ? (
+        {state.quiz === "capital" && (
           <p className="quiz-question">
-            {questionNum + 1}. {randomCountry.capital} is the capital of
+            {state.questionNum + 1}. {randomCountry.capital} is the capital of
           </p>
-        ) : (
+        )}
+        {state.quiz === "flag" && (
           <>
             <div className="flag-image">
               <img src={randomCountry.flag} alt="flag" />
             </div>
             <p className="quiz-question">
-              {questionNum + 1}. Which country does this flag belong to?
+              {state.questionNum + 1}. Which country does this flag belong to?
             </p>
           </>
         )}
@@ -67,8 +62,8 @@ const CapitalQuiz = ({
               index={index}
               randomCountry={randomCountry}
               country={country}
-              score={score}
-              setScore={setScore}
+              state={state}
+              dispatch={dispatch}
             />
           ))}
         </div>
@@ -77,7 +72,10 @@ const CapitalQuiz = ({
           onClick={() => {
             nextQuestion();
             setCountries(getFourRandomCountries());
-            setQuestionNum(questionNum + 1);
+            dispatch({
+              type: "setQuestion",
+              payload: { questionNum: state.questionNum + 1 },
+            });
           }}
         >
           Next
