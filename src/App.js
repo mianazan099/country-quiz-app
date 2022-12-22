@@ -13,24 +13,42 @@ function renderThis(state, dispatch) {
   }
 }
 
+export const ACTION = {
+  NEXT_QUESTION: "nextQuestion",
+  INCREMENT_SCORE: "incrementScore",
+  RESET_STATE: "resetState",
+  SET_QUIZ_FLAG: "setQuizFlag",
+  SET_QUIZ_CAPITAL: "setQuizCapital",
+};
+
 function reducer(state, action) {
   switch (action.type) {
-    case "setQuiz":
+    case ACTION.SET_QUIZ_FLAG:
       return {
         ...state,
-        quiz: action.payload.quiz,
+        quiz: "flag",
       };
-    case "setQuestion":
+    case ACTION.SET_QUIZ_CAPITAL:
       return {
         ...state,
-        questionNum: action.payload.questionNum,
+        quiz: "capital",
       };
-    case "setScore":
+    case ACTION.NEXT_QUESTION:
       return {
         ...state,
-        score: action.payload.score,
+        questionNum: state.questionNum + 1,
       };
-
+    case ACTION.INCREMENT_SCORE:
+      return {
+        ...state,
+        score: state.score + 1,
+      };
+    case ACTION.RESET_STATE:
+      return {
+        quiz: "choose",
+        questionNum: 0,
+        score: 0,
+      };
     default:
       break;
   }

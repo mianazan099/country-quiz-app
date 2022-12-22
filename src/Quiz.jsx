@@ -1,7 +1,8 @@
 import { useState, useEffect } from "react";
-import data from "./assets/countryData.json";
+import data from "./countryData.json";
 import Button from "./Button/Button";
-import adventure from "./assets/images/adventure.svg";
+import adventure from "./images/adventure.svg";
+import { ACTION } from "./App";
 
 function getFourRandomCountries() {
   const countries = [];
@@ -72,10 +73,7 @@ const CapitalQuiz = ({ state, dispatch }) => {
           onClick={() => {
             nextQuestion();
             setCountries(getFourRandomCountries());
-            dispatch({
-              type: "setQuestion",
-              payload: { questionNum: state.questionNum + 1 },
-            });
+            dispatch({ type: ACTION.NEXT_QUESTION });
           }}
         >
           Next

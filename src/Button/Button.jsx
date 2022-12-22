@@ -1,4 +1,5 @@
 import "./Button.css";
+import { ACTION } from "../App";
 
 function checkAnswer(e, randomCountry, state, dispatch) {
   const answer = randomCountry.name.toLocaleLowerCase();
@@ -15,12 +16,7 @@ function checkAnswer(e, randomCountry, state, dispatch) {
   });
   if (answer === name) {
     e.target.classList.add("right");
-    dispatch({
-      type: "setScore",
-      payload: {
-        score: state.score + 1,
-      },
-    });
+    dispatch({ type: ACTION.INCREMENT_SCORE });
   } else {
     e.target.classList.add("wrong");
   }

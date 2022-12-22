@@ -1,5 +1,6 @@
-import winner from "../assets/images/winners.svg";
+import winner from "../images/winners.svg";
 import "./Result.css";
+import { ACTION } from "../App";
 
 const Result = ({ state, dispatch }) => {
   return (
@@ -16,12 +17,7 @@ const Result = ({ state, dispatch }) => {
         <button
           className="try-again"
           onClick={() => {
-            dispatch({ type: "setScore", payload: { score: 0 } });
-            dispatch({
-              type: "setQuestion",
-              payload: { questionNum: 0 },
-            });
-            dispatch({ type: "setQuiz", payload: { quiz: "choose" } });
+            dispatch({ type: ACTION.RESET_STATE });
           }}
         >
           Try again

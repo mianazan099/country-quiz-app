@@ -1,4 +1,5 @@
 import "./Choose.css";
+import { ACTION } from "../App";
 
 const Choose = ({ dispatch }) => {
   return (
@@ -9,7 +10,7 @@ const Choose = ({ dispatch }) => {
         <button
           className="choose-btn"
           onClick={() => {
-            dispatch({ type: "setQuiz", payload: { quiz: "capital" } });
+            dispatch({ type: ACTION.SET_QUIZ_CAPITAL });
           }}
         >
           Guess the Capital
@@ -17,7 +18,7 @@ const Choose = ({ dispatch }) => {
         <button
           className="choose-btn"
           onClick={() => {
-            dispatch({ type: "setQuiz", payload: { quiz: "flag" } });
+            dispatch({ type: ACTION.SET_QUIZ_FLAG });
           }}
         >
           Guess the Flag
