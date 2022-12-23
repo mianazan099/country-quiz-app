@@ -1,6 +1,5 @@
-import winner from "../images/winners.svg";
-import "./Result.css";
-import { ACTION } from "../App";
+import winner from "./images/winners.svg";
+import { ACTION } from "./App";
 
 const Result = ({ state, dispatch }) => {
   return (

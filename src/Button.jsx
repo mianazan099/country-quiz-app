@@ -1,17 +1,16 @@
-import "./Button.css";
-import { ACTION } from "../App";
+import { ACTION } from "./App";
 
-function checkAnswer(e, randomCountry, state, dispatch) {
+function checkAnswer(e, randomCountry, dispatch) {
   const answer = randomCountry.name.toLocaleLowerCase();
   const name = e.target.innerHTML.slice(29, -30).toLocaleLowerCase();
+
   document.querySelector(".quiz-next-question").style.display = "block";
+
   document.querySelectorAll(".option").forEach((option) => {
     option.disabled = true;
     const optionName = option.innerHTML.slice(29, -30).toLocaleLowerCase();
     if (answer === optionName) {
-      setTimeout(() => {
-        option.classList.add("right");
-      }, 250);
+      option.classList.add("right");
     }
   });
   if (answer === name) {
@@ -24,11 +23,11 @@ function checkAnswer(e, randomCountry, state, dispatch) {
 
 const letters = ["A", "B", "C", "D"];
 
-const Button = ({ index, randomCountry, country, state, dispatch }) => (
+const Button = ({ index, randomCountry, country, dispatch }) => (
   <button
     className="option"
     onClick={(e) => {
-      checkAnswer(e, randomCountry, state, dispatch);
+      checkAnswer(e, randomCountry, dispatch);
     }}
   >
     <span className="letter">{letters[index]}</span>

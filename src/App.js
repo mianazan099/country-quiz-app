@@ -1,17 +1,7 @@
 import { useReducer } from "react";
-import Choose from "./Choose/Choose";
-import Result from "./Result/Result";
+import Choose from "./Choose";
 import Quiz from "./Quiz";
-import "./App.css";
-
-function renderThis(state, dispatch) {
-  switch (state.quiz) {
-    case "choose":
-      return <Choose dispatch={dispatch} />;
-    default:
-      return <Quiz state={state} dispatch={dispatch} />;
-  }
-}
+import Result from "./Result";
 
 export const ACTION = {
   NEXT_QUESTION: "nextQuestion",
@@ -51,6 +41,15 @@ function reducer(state, action) {
       };
     default:
       break;
+  }
+}
+
+function renderThis(state, dispatch) {
+  switch (state.quiz) {
+    case "choose":
+      return <Choose dispatch={dispatch} />;
+    default:
+      return <Quiz state={state} dispatch={dispatch} />;
   }
 }
 

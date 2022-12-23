@@ -1,5 +1,4 @@
-import "./Choose.css";
-import { ACTION } from "../App";
+import { ACTION } from "./App";
 
 const Choose = ({ dispatch }) => {
   return (

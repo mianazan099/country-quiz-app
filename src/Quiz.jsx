@@ -1,19 +1,24 @@
 import { useState, useEffect } from "react";
 import data from "./countryData.json";
-import Button from "./Button/Button";
+import Button from "./Button";
 import adventure from "./images/adventure.svg";
 import { ACTION } from "./App";
 
 function getFourRandomCountries() {
   const countries = [];
   for (let i = 0; i < 4; i++) {
-    countries.push(data[Math.floor(Math.random() * data.length)]);
+    let country;
+    do {
+      country = data[Math.floor(Math.random() * data.length)];
+    } while (countries.includes(country));
+    countries.push(country);
   }
   return countries;
 }
 
 function getRandomCountry(countries) {
-  return countries[Math.floor(Math.random() * countries.length)];
+  let randomCountry = countries[Math.floor(Math.random() * countries.length)];
+  return randomCountry;
 }
 
 function nextQuestion() {

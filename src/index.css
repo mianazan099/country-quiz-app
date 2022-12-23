@@ -1,5 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap");
 
+/* || RESET */
+
 *,
 *::before,
 *::after {
@@ -51,4 +53,257 @@ picture {
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
   }
+}
+
+/* || APP */
+
+.app {
+  min-height: 100vh;
+  background-image: url(./images/background.png);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: grid;
+  place-content: center;
+  font-family: "Poppins", sans-serif;
+}
+
+.outer-card {
+  width: min(100vw, 496px);
+  position: relative;
+  padding: 1rem;
+}
+
+.quiz-title {
+  font-weight: 700;
+  font-size: 36px;
+  text-transform: uppercase;
+  color: #f2f2f2;
+  margin-bottom: 10px;
+}
+
+.quiz-image {
+  position: absolute;
+  right: 1rem;
+  top: 1rem;
+}
+
+.inner-card {
+  background-color: white;
+  padding: 68px 32px 32px;
+  border-radius: 24px;
+}
+
+.flag-image {
+  width: 84px;
+  filter: drop-shadow(0px 4px 24px rgba(0, 0, 0, 0.1));
+  border-radius: 4px;
+  overflow: hidden;
+  margin-bottom: 28px;
+}
+
+.quiz-question {
+  font-weight: 700;
+  font-size: 24px;
+  color: #2f527b;
+  margin-bottom: 32px;
+}
+
+.quiz-options-container {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  margin-bottom: 24px;
+}
+
+.quiz-next-question {
+  border: none;
+  background: #f9a826;
+  box-shadow: 0px 2px 4px rgba(252, 168, 47, 0.4);
+  border-radius: 12px;
+  font-weight: 700;
+  font-size: 18px;
+  color: #ffffff;
+  padding: 15px 36px;
+  margin-left: auto;
+  display: none;
+}
+
+@media (max-width: 464px) {
+  .quiz-title {
+    text-align: center;
+    font-size: 32px;
+  }
+  .quiz-title.up-title {
+    margin-bottom: 80px;
+  }
+  .quiz-image {
+    top: 76px;
+    right: 50%;
+    transform: translateX(50%);
+  }
+  .flag-image {
+    margin-bottom: 18px;
+  }
+  .quiz-question {
+    font-size: 20px;
+    margin-bottom: 20px;
+  }
+  .quiz-options-container {
+    gap: 20px;
+  }
+}
+
+/* || CHOOSE */
+
+.inner-card.choose-card {
+  padding: 5rem 2.5rem;
+  text-align: center;
+}
+
+.choose-text {
+  font-weight: 700;
+  font-size: 30px;
+  color: #1d355d;
+  margin-bottom: 3rem;
+}
+
+.choose-btn:first-of-type {
+  margin-bottom: 2rem;
+}
+
+.choose-btn {
+  width: 300px;
+  padding: 18px 60px;
+  border: 2px solid #1d355d;
+  border-radius: 12px;
+  background: none;
+  font-weight: 600;
+  font-size: 18px;
+  color: #1d355d;
+}
+
+@media (max-width: 464px) {
+  .inner-card.choose-card {
+    padding: 3rem 2rem;
+  }
+  .choose-text {
+    font-size: 24px;
+    margin-bottom: 2rem;
+  }
+  .choose-btn {
+    width: min(270px, 100%);
+    font-size: 16px;
+  }
+}
+
+/* BUTTON */
+
+.option {
+  text-align: left;
+  padding: 10px 40px 10px 20px;
+  font-size: 18px;
+  color: rgba(96, 102, 208, 0.8);
+  border: 2px solid rgba(96, 102, 208, 0.7);
+  border-radius: 12px;
+  background-color: transparent;
+  position: relative;
+}
+
+.option:hover {
+  background-color: #f9a826;
+  border-color: #f9a826;
+  color: white;
+}
+
+.option .letter {
+  margin-right: 46px;
+  font-size: 24px;
+}
+
+.option.wrong {
+  background-color: #ea8282;
+  border-color: #ea8282;
+  color: white;
+}
+
+.option.right {
+  background-color: #60bf88;
+  border-color: #60bf88;
+  color: white;
+}
+
+.option .identify {
+  width: 20px;
+  height: 20px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  right: 18px;
+  display: none;
+}
+
+.option.right .identify {
+  background-image: url(./images/icons8-checkmark.svg);
+  display: inline-block;
+}
+
+.option.wrong .identify {
+  background-image: url(./images/icons8-cancel.svg);
+  display: inline-block;
+}
+
+@media (max-width: 464px) {
+  .option {
+    font-size: 16px;
+  }
+  .option .letter {
+    font-size: 20px;
+  }
+}
+
+/* || RESULT */
+
+.inner-card.result-card {
+  padding: 48px 32px 32px;
+  text-align: center;
+}
+
+.result-image {
+  margin-bottom: 72px;
+}
+
+.result-image img {
+  margin: 0 auto;
+}
+
+.result {
+  font-weight: 700;
+  font-size: 48px;
+  color: #1d355d;
+}
+
+.your-result {
+  font-size: 18px;
+  color: #1d355d;
+  margin-bottom: 72px;
+}
+
+.your-result span {
+  color: #6fcf97;
+  font-weight: 700;
+  font-size: 36px;
+}
+
+.try-again {
+  padding: 18px 60px;
+  border: 2px solid #1d355d;
+  border-radius: 12px;
+  background: none;
+  font-weight: 600;
+  font-size: 18px;
+  color: #1d355d;
 }
